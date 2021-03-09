@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import StateInAction from './StateInAction';
 import SimpleEvent from './SimpleEvent';

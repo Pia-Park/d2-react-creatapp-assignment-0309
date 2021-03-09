@@ -13,6 +13,7 @@ export class StatePractice extends Component {
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleClear = this.handleClear.bind(this)
         this.handleUserForm = this.handleUserForm.bind(this)
+        this.handleWidth = this.handleWidth.bind(this)
     }
 
     handleMessage(e){
@@ -39,14 +40,25 @@ export class StatePractice extends Component {
         
     }
 
+    handleWidth(){
+        console.dir('Image Hieght: ' + this.imgElement.current.clientHeight)
+        if(this.imgElement.current.clientHeight > 100){
+            console.log('Your Image is Big!!!!!!!')
+        } else {
+            console.log('Your Image is Small!!!!!!')
+        }
+    }
+
+    imgElement = React.createRef();
+
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <form className="app-main" onSubmit={this.handleSubmit}>
                     <h3 onMouseEnter={this.handleClear}>{this.state.message}</h3>
                     <input type="text" onFocus={this.handleUserForm} placeholder={this.state.placeholder} onChange={this.handleMessage} required/>
                     <button type="submit">SUBMIT</button>
-                    <img src="https://park-inae.netlify.app/#images-d-1" alt=""/>
+                    <img src="https://pixabay.com/get/gb26cd4a045096402ef7038d2a29a528938d8bf2a3c9d53ba719fc69544126b90f9a8dbc12f3c57a86094b5de2a72cf51_1920.jpg" ref={this.imgElement} onLoad={this.handleWidth} className="image" alt=""/>
                 </form>
             </div>
         )
